@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 package cmd
 
@@ -38,6 +38,32 @@ var adminOrganizationProjectsGroupsCreate = cli.Command{
 		},
 	},
 	Action:          handleAdminOrganizationProjectsGroupsCreate,
+	HideHelpCommand: true,
+}
+
+var adminOrganizationProjectsGroupsRetrieve = cli.Command{
+	Name:    "retrieve",
+	Usage:   "Retrieves a project's group.",
+	Suggest: true,
+	Flags: []cli.Flag{
+		&requestflag.Flag[string]{
+			Name:      "project-id",
+			Required:  true,
+			PathParam: "project_id",
+		},
+		&requestflag.Flag[string]{
+			Name:      "group-id",
+			Required:  true,
+			PathParam: "group_id",
+		},
+		&requestflag.Flag[string]{
+			Name:      "group-type",
+			Usage:     "The type of group to retrieve.",
+			Default:   "group",
+			QueryPath: "group_type",
+		},
+	},
+	Action:          handleAdminOrganizationProjectsGroupsRetrieve,
 	HideHelpCommand: true,
 }
 
@@ -142,6 +168,60 @@ func handleAdminOrganizationProjectsGroupsCreate(ctx context.Context, cmd *cli.C
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "admin:organization:projects:groups create",
+		Transform:      transform,
+	})
+}
+
+func handleAdminOrganizationProjectsGroupsRetrieve(ctx context.Context, cmd *cli.Command) error {
+	client := openai.NewClient(getDefaultRequestOptions(cmd)...)
+	unusedArgs := cmd.Args().Slice()
+	if !cmd.IsSet("project-id") && len(unusedArgs) > 0 {
+		cmd.Set("project-id", unusedArgs[0])
+		unusedArgs = unusedArgs[1:]
+	}
+	if !cmd.IsSet("group-id") && len(unusedArgs) > 0 {
+		cmd.Set("group-id", unusedArgs[0])
+		unusedArgs = unusedArgs[1:]
+	}
+	if len(unusedArgs) > 0 {
+		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
+	}
+
+	options, err := flagOptions(
+		cmd,
+		apiquery.NestedQueryFormatBrackets,
+		apiquery.ArrayQueryFormatBrackets,
+		EmptyBody,
+		false,
+	)
+	if err != nil {
+		return err
+	}
+
+	params := openai.AdminOrganizationProjectGroupGetParams{}
+
+	var res []byte
+	options = append(options, option.WithResponseBodyInto(&res))
+	_, err = client.Admin.Organization.Projects.Groups.Get(
+		ctx,
+		cmd.Value("project-id").(string),
+		cmd.Value("group-id").(string),
+		params,
+		options...,
+	)
+	if err != nil {
+		return err
+	}
+
+	obj := gjson.ParseBytes(res)
+	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
+	transform := cmd.Root().String("transform")
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
+		Title:          "admin:organization:projects:groups retrieve",
 		Transform:      transform,
 	})
 }

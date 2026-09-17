@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 package cmd
 
@@ -103,6 +103,7 @@ func TestAdminOrganizationUsageCosts(t *testing.T) {
 			"--end-time", "0",
 			"--group-by", "project_id",
 			"--limit", "0",
+			"--line-item", "string",
 			"--page", "page",
 			"--project-id", "string",
 		)
@@ -126,6 +127,27 @@ func TestAdminOrganizationUsageEmbeddings(t *testing.T) {
 			"--page", "page",
 			"--project-id", "string",
 			"--user-id", "string",
+		)
+	})
+}
+
+func TestAdminOrganizationUsageFileSearchCalls(t *testing.T) {
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t,
+			"--api-key", "string",
+			"--admin-api-key", "string",
+			"admin:organization:usage", "file-search-calls",
+			"--start-time", "0",
+			"--api-key-id", "string",
+			"--bucket-width", "1m",
+			"--end-time", "0",
+			"--group-by", "project_id",
+			"--limit", "0",
+			"--page", "page",
+			"--project-id", "string",
+			"--user-id", "string",
+			"--vector-store-id", "string",
 		)
 	})
 }
@@ -188,6 +210,28 @@ func TestAdminOrganizationUsageVectorStores(t *testing.T) {
 			"--limit", "0",
 			"--page", "page",
 			"--project-id", "string",
+		)
+	})
+}
+
+func TestAdminOrganizationUsageWebSearchCalls(t *testing.T) {
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t,
+			"--api-key", "string",
+			"--admin-api-key", "string",
+			"admin:organization:usage", "web-search-calls",
+			"--start-time", "0",
+			"--api-key-id", "string",
+			"--bucket-width", "1m",
+			"--context-level", "low",
+			"--end-time", "0",
+			"--group-by", "project_id",
+			"--limit", "0",
+			"--model", "string",
+			"--page", "page",
+			"--project-id", "string",
+			"--user-id", "string",
 		)
 	})
 }

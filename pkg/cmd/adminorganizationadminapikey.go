@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 package cmd
 
@@ -23,6 +23,11 @@ var adminOrganizationAdminAPIKeysCreate = cli.Command{
 			Name:     "name",
 			Required: true,
 			BodyPath: "name",
+		},
+		&requestflag.Flag[int64]{
+			Name:     "expires-in-seconds",
+			Usage:    "The number of seconds until the API key expires. Omit this field for a key that does not expire.",
+			BodyPath: "expires_in_seconds",
 		},
 	},
 	Action:          handleAdminOrganizationAdminAPIKeysCreate,

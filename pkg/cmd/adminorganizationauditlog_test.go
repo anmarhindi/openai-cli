@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 package cmd
 
@@ -26,6 +26,7 @@ func TestAdminOrganizationAuditLogsList(t *testing.T) {
 			"--limit", "0",
 			"--project-id", "string",
 			"--resource-id", "string",
+			"--tenant-only=true",
 		)
 	})
 
@@ -52,6 +53,7 @@ func TestAdminOrganizationAuditLogsList(t *testing.T) {
 			"--limit", "0",
 			"--project-id", "string",
 			"--resource-id", "string",
+			"--tenant-only=true",
 		)
 	})
 }

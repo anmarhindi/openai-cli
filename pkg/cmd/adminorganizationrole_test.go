@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 package cmd
 
@@ -33,6 +33,18 @@ func TestAdminOrganizationRolesCreate(t *testing.T) {
 			"--api-key", "string",
 			"--admin-api-key", "string",
 			"admin:organization:roles", "create",
+		)
+	})
+}
+
+func TestAdminOrganizationRolesRetrieve(t *testing.T) {
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t,
+			"--api-key", "string",
+			"--admin-api-key", "string",
+			"admin:organization:roles", "retrieve",
+			"--role-id", "role_id",
 		)
 	})
 }

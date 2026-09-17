@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 package cmd
 
@@ -30,7 +30,8 @@ func init() {
 		Suggest:   true,
 		Version:   Version,
 		ErrWriter: &CommandErrorBuffer,
-		Flags: []cli.Flag{
+		Before:    configureMTLS,
+		Flags: append([]cli.Flag{
 			&cli.BoolFlag{
 				Name:  "debug",
 				Usage: "Enable debug logging",
@@ -98,7 +99,7 @@ func init() {
 				Name:    "webhook-secret",
 				Sources: cli.EnvVars("OPENAI_WEBHOOK_SECRET"),
 			},
-		},
+		}, mtlsClientFlags()...),
 		Commands: []*cli.Command{
 			{
 				Name:     "completions",
@@ -156,6 +157,14 @@ func init() {
 					&imagesCreateVariation,
 					&imagesEdit,
 					&imagesGenerate,
+				},
+			},
+			{
+				Name:     "content-provenance-checks",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&contentProvenanceChecksCreate,
 				},
 			},
 			{
@@ -277,6 +286,42 @@ func init() {
 					&vectorStoresFileBatchesRetrieve,
 					&vectorStoresFileBatchesCancel,
 					&vectorStoresFileBatchesListFiles,
+				},
+			},
+			{
+				Name:     "safety:alerts",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&safetyAlertsRetrieve,
+				},
+			},
+			{
+				Name:     "beta:responses",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&betaResponsesCreate,
+					&betaResponsesRetrieve,
+					&betaResponsesDelete,
+					&betaResponsesCancel,
+					&betaResponsesCompact,
+				},
+			},
+			{
+				Name:     "beta:responses:input-items",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&betaResponsesInputItemsList,
+				},
+			},
+			{
+				Name:     "beta:responses:input-tokens",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&betaResponsesInputTokensCount,
 				},
 			},
 			{
@@ -416,9 +461,11 @@ func init() {
 					&adminOrganizationUsageCompletions,
 					&adminOrganizationUsageCosts,
 					&adminOrganizationUsageEmbeddings,
+					&adminOrganizationUsageFileSearchCalls,
 					&adminOrganizationUsageImages,
 					&adminOrganizationUsageModerations,
 					&adminOrganizationUsageVectorStores,
+					&adminOrganizationUsageWebSearchCalls,
 				},
 			},
 			{
@@ -449,6 +496,7 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationUsersRolesCreate,
+					&adminOrganizationUsersRolesRetrieve,
 					&adminOrganizationUsersRolesList,
 					&adminOrganizationUsersRolesDelete,
 				},
@@ -459,6 +507,7 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationGroupsCreate,
+					&adminOrganizationGroupsRetrieve,
 					&adminOrganizationGroupsUpdate,
 					&adminOrganizationGroupsList,
 					&adminOrganizationGroupsDelete,
@@ -470,6 +519,7 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationGroupsUsersCreate,
+					&adminOrganizationGroupsUsersRetrieve,
 					&adminOrganizationGroupsUsersList,
 					&adminOrganizationGroupsUsersDelete,
 				},
@@ -480,6 +530,7 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationGroupsRolesCreate,
+					&adminOrganizationGroupsRolesRetrieve,
 					&adminOrganizationGroupsRolesList,
 					&adminOrganizationGroupsRolesDelete,
 				},
@@ -490,9 +541,41 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationRolesCreate,
+					&adminOrganizationRolesRetrieve,
 					&adminOrganizationRolesUpdate,
 					&adminOrganizationRolesList,
 					&adminOrganizationRolesDelete,
+				},
+			},
+			{
+				Name:     "admin:organization:data-retention",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationDataRetentionRetrieve,
+					&adminOrganizationDataRetentionUpdate,
+				},
+			},
+			{
+				Name:     "admin:organization:spend-limit",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationSpendLimitRetrieve,
+					&adminOrganizationSpendLimitUpdate,
+					&adminOrganizationSpendLimitDelete,
+				},
+			},
+			{
+				Name:     "admin:organization:spend-alerts",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationSpendAlertsCreate,
+					&adminOrganizationSpendAlertsRetrieve,
+					&adminOrganizationSpendAlertsUpdate,
+					&adminOrganizationSpendAlertsList,
+					&adminOrganizationSpendAlertsDelete,
 				},
 			},
 			{
@@ -539,6 +622,7 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationProjectsUsersRolesCreate,
+					&adminOrganizationProjectsUsersRolesRetrieve,
 					&adminOrganizationProjectsUsersRolesList,
 					&adminOrganizationProjectsUsersRolesDelete,
 				},
@@ -550,8 +634,17 @@ func init() {
 				Commands: []*cli.Command{
 					&adminOrganizationProjectsServiceAccountsCreate,
 					&adminOrganizationProjectsServiceAccountsRetrieve,
+					&adminOrganizationProjectsServiceAccountsUpdate,
 					&adminOrganizationProjectsServiceAccountsList,
 					&adminOrganizationProjectsServiceAccountsDelete,
+				},
+			},
+			{
+				Name:     "admin:organization:projects:service-accounts:api-keys",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationProjectsServiceAccountsAPIKeysCreate,
 				},
 			},
 			{
@@ -574,11 +667,31 @@ func init() {
 				},
 			},
 			{
+				Name:     "admin:organization:projects:model-permissions",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationProjectsModelPermissionsRetrieve,
+					&adminOrganizationProjectsModelPermissionsUpdate,
+					&adminOrganizationProjectsModelPermissionsDelete,
+				},
+			},
+			{
+				Name:     "admin:organization:projects:hosted-tool-permissions",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationProjectsHostedToolPermissionsRetrieve,
+					&adminOrganizationProjectsHostedToolPermissionsUpdate,
+				},
+			},
+			{
 				Name:     "admin:organization:projects:groups",
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationProjectsGroupsCreate,
+					&adminOrganizationProjectsGroupsRetrieve,
 					&adminOrganizationProjectsGroupsList,
 					&adminOrganizationProjectsGroupsDelete,
 				},
@@ -589,6 +702,7 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationProjectsGroupsRolesCreate,
+					&adminOrganizationProjectsGroupsRolesRetrieve,
 					&adminOrganizationProjectsGroupsRolesList,
 					&adminOrganizationProjectsGroupsRolesDelete,
 				},
@@ -599,9 +713,41 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&adminOrganizationProjectsRolesCreate,
+					&adminOrganizationProjectsRolesRetrieve,
 					&adminOrganizationProjectsRolesUpdate,
 					&adminOrganizationProjectsRolesList,
 					&adminOrganizationProjectsRolesDelete,
+				},
+			},
+			{
+				Name:     "admin:organization:projects:data-retention",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationProjectsDataRetentionRetrieve,
+					&adminOrganizationProjectsDataRetentionUpdate,
+				},
+			},
+			{
+				Name:     "admin:organization:projects:spend-limit",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationProjectsSpendLimitRetrieve,
+					&adminOrganizationProjectsSpendLimitUpdate,
+					&adminOrganizationProjectsSpendLimitDelete,
+				},
+			},
+			{
+				Name:     "admin:organization:projects:spend-alerts",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&adminOrganizationProjectsSpendAlertsCreate,
+					&adminOrganizationProjectsSpendAlertsRetrieve,
+					&adminOrganizationProjectsSpendAlertsUpdate,
+					&adminOrganizationProjectsSpendAlertsList,
+					&adminOrganizationProjectsSpendAlertsDelete,
 				},
 			},
 			{
@@ -640,6 +786,19 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&responsesInputTokensCount,
+				},
+			},
+			{
+				Name:     "live:sessions",
+				Category: "API RESOURCE",
+				Suggest:  true,
+				Commands: []*cli.Command{
+					&liveSessionsAccept,
+					&liveSessionsDownloadRecording,
+					&liveSessionsFork,
+					&liveSessionsHangup,
+					&liveSessionsRefer,
+					&liveSessionsReject,
 				},
 			},
 			{

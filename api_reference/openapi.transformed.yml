@@ -45,6 +45,8 @@ tags:
   description: List and describe the various models available in the API.
 - name: Moderations
   description: Given text and/or image inputs, classifies if those inputs are potentially harmful.
+- name: Responses
+  description: Create and manage model responses.
 - name: Audit Logs
   description: List user actions and configuration changes within this organization.
 paths:
@@ -16738,6 +16740,7 @@ paths:
             {
               "id": "resp_67ccd2bed1ec8190b14f964abc0542670bb6a6b452d3795b",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741476542,
               "status": "completed",
               "completed_at": 1741476543,
@@ -16887,6 +16890,7 @@ paths:
             {
               "id": "resp_67ccd3a9da748190baa7f1570fe91ac604becb25c45c1d41",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741476777,
               "status": "completed",
               "completed_at": 1741476778,
@@ -17014,6 +17018,7 @@ paths:
             {
               "id": "resp_686eef60237881a2bd1180bb8b13de430e34c516d176ff86",
               "object": "response",
+              "access_programs": null,
               "created_at": 1752100704,
               "status": "completed",
               "completed_at": 1752100705,
@@ -17136,6 +17141,7 @@ paths:
             {
               "id": "resp_67ccf18ef5fc8190b16dbee19bc54e5f087bb177ab789d5c",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741484430,
               "status": "completed",
               "completed_at": 1741484431,
@@ -17308,6 +17314,7 @@ paths:
             {
               "id": "resp_67ccf4c55fc48190b71bd0463ad3306d09504fb6872380d7",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741485253,
               "status": "completed",
               "completed_at": 1741485254,
@@ -17505,10 +17512,10 @@ paths:
               }
           response: |
             event: response.created
-            data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
+            data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
 
             event: response.in_progress
-            data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
+            data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
 
             event: response.output_item.added
             data: {"type":"response.output_item.added","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"in_progress","role":"assistant","content":[]}}
@@ -17531,7 +17538,7 @@ paths:
             data: {"type":"response.output_item.done","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}}
 
             event: response.completed
-            data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48},"user":null,"metadata":{}}}
+            data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48},"user":null,"metadata":{}}}
         - title: Functions
           request:
             curl: |
@@ -17672,6 +17679,7 @@ paths:
             {
               "id": "resp_67ca09c5efe0819096d0511c92b8c890096610f474011cc0",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741294021,
               "status": "completed",
               "completed_at": 1741294022,
@@ -17810,6 +17818,7 @@ paths:
             {
               "id": "resp_67ccd7eca01881908ff0b5146584e408072912b2993db808",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741477868,
               "status": "completed",
               "completed_at": 1741477869,
@@ -17950,6 +17959,7 @@ paths:
             {
               "id": "resp_67cb71b351908190a308f3859487620d06981a8637e6bc44",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741386163,
               "status": "completed",
               "completed_at": 1741386164,
@@ -18114,6 +18124,7 @@ paths:
             {
               "id": "resp_67cb71b351908190a308f3859487620d06981a8637e6bc44",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741386163,
               "status": "cancelled",
               "background": true,
@@ -22620,6 +22631,44 @@ paths:
               "created_at": 1741900000,
               "metadata": {"topic": "project-x"}
             }
+  /safety/cases/{id}:
+    get:
+      summary: Get safety case
+      description: Get a safety case by ID.
+      operationId: Getsafetycase
+      parameters:
+      - name: id
+        in: path
+        description: Safety case ID
+        required: true
+        schema:
+          description: Safety case ID
+          type: string
+          maxLength: 128
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SafetyCaseResource'
+      x-oaiMeta:
+        group: safety-cases
+        path: retrieve
+        examples:
+          request:
+            curl: |
+              curl https://api.openai.com/v1/safety/cases/C-abc123 \
+                -H "Authorization: Bearer $OPENAI_API_KEY"
+          response: |
+            {
+              "id": "C-abc123",
+              "object": "safety.case",
+              "created_at": 1787659200,
+              "entity_identifier": "safety-id-123",
+              "reason": "cyber_abuse",
+              "notice": {"type": "warning"}
+            }
   /safety/alerts/{id}:
     get:
       summary: Get project safety alert
@@ -22689,6 +22738,317 @@ paths:
       x-oaiMeta:
         group: live
         returns: The stored session recording as binary stereo WAV audio.
+  /organization/external_storage:
+    get:
+      summary: List external storage configurations
+      description: List the organization's customer-managed external storage configurations.
+      operationId: Listexternalstorageconfigurations
+      parameters:
+      - name: project_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - example: proj_123
+            type: string
+          - type: 'null'
+      - name: after
+        in: query
+        description: Return external storage configurations after this ID.
+        required: false
+        schema:
+          anyOf:
+          - description: Return external storage configurations after this ID.
+            type: string
+          - type: 'null'
+      - name: order
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ExternalStorageOrder'
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalStorageListResource'
+      x-oaiMeta:
+        group: administration
+        examples:
+          request:
+            curl: |
+              curl "https://api.openai.com/v1/organization/external_storage?limit=20&order=desc" \
+                -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+                -H "Content-Type: application/json"
+          response: |
+            {
+              "object": "list",
+              "data": [
+                {
+                  "object": "organization.external_storage",
+                  "id": "extstorage_abc123",
+                  "project_id": "proj_abc123",
+                  "provider": {
+                    "type": "aws",
+                    "account_id": "123456789012",
+                    "region": "us-east-1",
+                    "bucket": "customer-logs",
+                    "role_arn": "arn:aws:iam::123456789012:role/OpenAIExternalStorageRole",
+                    "external_id": "proj_abc123"
+                  },
+                  "geography": "US",
+                  "status": "validated",
+                  "created_at": 1711471533
+                },
+                {
+                  "object": "organization.external_storage",
+                  "id": "extstorage_azure123",
+                  "project_id": "proj_azure123",
+                  "provider": {
+                    "type": "azure",
+                    "tenant_id": "11111111-1111-1111-1111-111111111111",
+                    "subscription_id": "22222222-2222-2222-2222-222222222222",
+                    "resource_group": "customer-rg",
+                    "account_name": "customerstorage",
+                    "container": "openai-data",
+                    "region": "eastus"
+                  },
+                  "geography": "US",
+                  "status": "validated",
+                  "created_at": 1711471500
+                }
+              ],
+              "first_id": "extstorage_abc123",
+              "last_id": "extstorage_azure123",
+              "has_more": false
+            }
+      security:
+      - AdminApiKeyAuth: []
+    post:
+      summary: Create an external storage configuration
+      description: Register one customer-managed external storage configuration.
+      operationId: Createanexternalstorageconfiguration
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateExternalStorageBody'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalStorageResponse'
+      x-oaiMeta:
+        group: administration
+        examples:
+        - title: AWS S3
+          request:
+            curl: |
+              curl -X POST https://api.openai.com/v1/organization/external_storage \
+                -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+                -H "Content-Type: application/json" \
+                -d '{
+                  "project_id": "proj_abc123",
+                  "provider": {
+                    "type": "aws",
+                    "bucket": "customer-logs",
+                    "role_arn": "arn:aws:iam::123456789012:role/OpenAIExternalStorageRole"
+                  }
+                }'
+          response: |
+            {
+              "object": "organization.external_storage",
+              "id": "extstorage_abc123",
+              "project_id": "proj_abc123",
+              "provider": {
+                "type": "aws",
+                "account_id": "123456789012",
+                "region": "us-east-1",
+                "bucket": "customer-logs",
+                "role_arn": "arn:aws:iam::123456789012:role/OpenAIExternalStorageRole",
+                "external_id": "proj_abc123"
+              },
+              "geography": "US",
+              "status": "pending",
+              "created_at": 1711471533
+            }
+        - title: Azure Blob Storage
+          request:
+            curl: |
+              curl -X POST https://api.openai.com/v1/organization/external_storage \
+                -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+                -H "Content-Type: application/json" \
+                -d '{
+                  "project_id": "proj_azure123",
+                  "provider": {
+                    "type": "azure",
+                    "tenant_id": "11111111-1111-1111-1111-111111111111",
+                    "subscription_id": "22222222-2222-2222-2222-222222222222",
+                    "resource_group": "customer-rg",
+                    "account_name": "customerstorage",
+                    "container": "openai-data"
+                  }
+                }'
+          response: |
+            {
+              "object": "organization.external_storage",
+              "id": "extstorage_azure123",
+              "project_id": "proj_azure123",
+              "provider": {
+                "type": "azure",
+                "tenant_id": "11111111-1111-1111-1111-111111111111",
+                "subscription_id": "22222222-2222-2222-2222-222222222222",
+                "resource_group": "customer-rg",
+                "account_name": "customerstorage",
+                "container": "openai-data",
+                "region": "eastus"
+              },
+              "geography": "US",
+              "status": "pending",
+              "created_at": 1711471533
+            }
+      security:
+      - AdminApiKeyAuth: []
+  /organization/external_storage/{external_storage_id}:
+    get:
+      summary: Get an external storage configuration
+      description: Get one customer-managed external storage configuration.
+      operationId: Getanexternalstorageconfiguration
+      parameters:
+      - name: external_storage_id
+        in: path
+        required: true
+        schema:
+          example: extstorage_123
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalStorageResponse'
+      x-oaiMeta:
+        group: administration
+        examples:
+          request:
+            curl: |
+              curl https://api.openai.com/v1/organization/external_storage/extstorage_azure123 \
+                -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+                -H "Content-Type: application/json"
+          response: |
+            {
+              "object": "organization.external_storage",
+              "id": "extstorage_azure123",
+              "project_id": "proj_azure123",
+              "provider": {
+                "type": "azure",
+                "tenant_id": "11111111-1111-1111-1111-111111111111",
+                "subscription_id": "22222222-2222-2222-2222-222222222222",
+                "resource_group": "customer-rg",
+                "account_name": "customerstorage",
+                "container": "openai-data",
+                "region": "eastus"
+              },
+              "geography": "US",
+              "status": "validated",
+              "created_at": 1711471533
+            }
+      security:
+      - AdminApiKeyAuth: []
+    delete:
+      summary: Delete an external storage configuration
+      description: Disconnect a customer-managed external storage configuration. Removing the project's last configuration restores organization-default retention if customer-managed retention was active. Repeating a deletion also completes any interrupted retention update. Cloud storage is unchanged.
+      operationId: Deleteanexternalstorageconfiguration
+      parameters:
+      - name: external_storage_id
+        in: path
+        required: true
+        schema:
+          example: extstorage_123
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalStorageDeletedResource'
+      x-oaiMeta:
+        group: administration
+        examples:
+          request:
+            curl: |
+              curl -X DELETE https://api.openai.com/v1/organization/external_storage/extstorage_abc123 \
+                -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+                -H "Content-Type: application/json"
+          response: |
+            {
+              "object": "organization.external_storage.deleted",
+              "id": "extstorage_abc123",
+              "deleted": true
+            }
+      security:
+      - AdminApiKeyAuth: []
+  /organization/external_storage/{external_storage_id}/validate:
+    post:
+      summary: Validate an external storage configuration
+      description: Validate one customer-managed external storage configuration.
+      operationId: Validateanexternalstorageconfiguration
+      parameters:
+      - name: external_storage_id
+        in: path
+        required: true
+        schema:
+          example: extstorage_123
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalStorageResponse'
+      x-oaiMeta:
+        group: administration
+        examples:
+          request:
+            curl: |
+              curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_azure123/validate \
+                -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+                -H "Content-Type: application/json"
+          response: |
+            {
+              "object": "organization.external_storage",
+              "id": "extstorage_azure123",
+              "project_id": "proj_azure123",
+              "provider": {
+                "type": "azure",
+                "tenant_id": "11111111-1111-1111-1111-111111111111",
+                "subscription_id": "22222222-2222-2222-2222-222222222222",
+                "resource_group": "customer-rg",
+                "account_name": "customerstorage",
+                "container": "openai-data",
+                "region": "eastus"
+              },
+              "geography": "US",
+              "status": "validated",
+              "created_at": 1711471533
+            }
+      security:
+      - AdminApiKeyAuth: []
   /organization/spend_limit:
     get:
       summary: Get organization spend limit
@@ -23742,6 +24102,8 @@ paths:
             }
   /responses/input_tokens:
     post:
+      tags:
+      - Responses
       summary: Get input token counts
       description: |-
         Returns input token counts of the request.
@@ -23855,6 +24217,8 @@ paths:
             }
   /responses/compact:
     post:
+      tags:
+      - Responses
       summary: Compact conversation
       description: |-
         Compact a conversation. Returns a compacted response object.
@@ -28528,6 +28892,7 @@ paths:
             {
               "id": "resp_67ccd2bed1ec8190b14f964abc0542670bb6a6b452d3795b",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741476542,
               "status": "completed",
               "completed_at": 1741476543,
@@ -28677,6 +29042,7 @@ paths:
             {
               "id": "resp_67ccd3a9da748190baa7f1570fe91ac604becb25c45c1d41",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741476777,
               "status": "completed",
               "completed_at": 1741476778,
@@ -28804,6 +29170,7 @@ paths:
             {
               "id": "resp_686eef60237881a2bd1180bb8b13de430e34c516d176ff86",
               "object": "response",
+              "access_programs": null,
               "created_at": 1752100704,
               "status": "completed",
               "completed_at": 1752100705,
@@ -28926,6 +29293,7 @@ paths:
             {
               "id": "resp_67ccf18ef5fc8190b16dbee19bc54e5f087bb177ab789d5c",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741484430,
               "status": "completed",
               "completed_at": 1741484431,
@@ -29098,6 +29466,7 @@ paths:
             {
               "id": "resp_67ccf4c55fc48190b71bd0463ad3306d09504fb6872380d7",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741485253,
               "status": "completed",
               "completed_at": 1741485254,
@@ -29295,10 +29664,10 @@ paths:
               }
           response: |
             event: response.created
-            data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
+            data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
 
             event: response.in_progress
-            data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
+            data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
 
             event: response.output_item.added
             data: {"type":"response.output_item.added","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"in_progress","role":"assistant","content":[]}}
@@ -29321,7 +29690,7 @@ paths:
             data: {"type":"response.output_item.done","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}}
 
             event: response.completed
-            data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48},"user":null,"metadata":{}}}
+            data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","access_programs":null,"created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-6-astra","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48},"user":null,"metadata":{}}}
         - title: Functions
           request:
             curl: |
@@ -29462,6 +29831,7 @@ paths:
             {
               "id": "resp_67ca09c5efe0819096d0511c92b8c890096610f474011cc0",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741294021,
               "status": "completed",
               "completed_at": 1741294022,
@@ -29600,6 +29970,7 @@ paths:
             {
               "id": "resp_67ccd7eca01881908ff0b5146584e408072912b2993db808",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741477868,
               "status": "completed",
               "completed_at": 1741477869,
@@ -29767,6 +30138,7 @@ paths:
             {
               "id": "resp_67cb71b351908190a308f3859487620d06981a8637e6bc44",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741386163,
               "status": "completed",
               "completed_at": 1741386164,
@@ -29957,6 +30329,7 @@ paths:
             {
               "id": "resp_67cb71b351908190a308f3859487620d06981a8637e6bc44",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741386163,
               "status": "cancelled",
               "background": true,
@@ -30004,6 +30377,8 @@ paths:
             }
   /responses/compact?beta=true:
     post:
+      tags:
+      - Responses
       summary: Compact conversation
       description: |-
         Compact a conversation. Returns a compacted response object.
@@ -30285,6 +30660,8 @@ paths:
             }
   /responses/input_tokens?beta=true:
     post:
+      tags:
+      - Responses
       summary: Get input token counts
       description: |-
         Returns input token counts of the request.
@@ -30653,6 +31030,20 @@ webhooks:
       responses:
         '200':
           description: Return any 2xx status code to acknowledge receipt. A 410 Gone response also stops retries; other non-2xx responses are retried.
+  safety_deactivation_issued:
+    post:
+      description: |
+        Sent when a deactivation is issued for a safety identifier in your organization.
+        Retrieve the case details with `GET /v1/safety/cases/{id}` using `data.id`.
+      requestBody:
+        description: The event payload sent by the API.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookSafetyDeactivationIssued'
+      responses:
+        '200':
+          description: Return any 2xx status code to acknowledge receipt. A 410 Gone response also stops retries; other non-2xx responses are retried.
   safety_org_alert_created:
     post:
       description: |
@@ -30666,6 +31057,20 @@ webhooks:
           application/json:
             schema:
               $ref: '#/components/schemas/WebhookSafetyOrgAlertCreated'
+      responses:
+        '200':
+          description: Return any 2xx status code to acknowledge receipt. A 410 Gone response also stops retries; other non-2xx responses are retried.
+  safety_warning_issued:
+    post:
+      description: |
+        Sent when a warning is issued for a safety identifier in your organization.
+        Retrieve the case details with `GET /v1/safety/cases/{id}` using `data.id`.
+      requestBody:
+        description: The event payload sent by the API.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookSafetyWarningIssued'
       responses:
         '200':
           description: Return any 2xx status code to acknowledge receipt. A 410 Gone response also stops retries; other non-2xx responses are retried.
@@ -31452,6 +31857,30 @@ components:
             id:
               type: string
               description: The ID of the external key configuration.
+        external_storage.registered:
+          type: object
+          description: The details for events with this `type`.
+          properties:
+            id:
+              type: string
+              description: The ID of the external storage configuration.
+            data:
+              type: object
+              description: The configuration for the external storage.
+              properties:
+                provider:
+                  $ref: '#/components/schemas/provider'
+                  description: The external storage provider configuration.
+                geography:
+                  type: string
+                  description: The OpenAI geography derived from the storage region.
+        external_storage.removed:
+          type: object
+          description: The details for events with this `type`.
+          properties:
+            id:
+              type: string
+              description: The ID of the external storage configuration.
         group.created:
           type: object
           description: The details for events with this `type`.
@@ -32238,6 +32667,8 @@ components:
       - checkpoint.permission.deleted
       - external_key.registered
       - external_key.removed
+      - external_storage.registered
+      - external_storage.removed
       - group.created
       - group.updated
       - group.deleted
@@ -35116,8 +35547,8 @@ components:
               propertyName: type
           seed:
             type: integer
-            minimum: -9.223372036854776e18
-            maximum: 9.223372036854776e18
+            minimum: -9223372036854775808
+            maximum: 9223372036854775807
             nullable: true
             deprecated: true
             description: |
@@ -35126,6 +35557,7 @@ components:
               Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.
             x-oaiMeta:
               beta: true
+            format: int64
           stream_options:
             $ref: '#/components/schemas/ChatCompletionStreamOptions'
           tools:
@@ -36540,6 +36972,7 @@ components:
               description: |
                 Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
                 overfitting.
+              default: auto
               anyOf:
               - type: string
                 enum:
@@ -36547,8 +36980,7 @@ components:
                 x-stainless-const: true
                 title: Auto
               - type: number
-                minimum: 0
-                exclusiveMinimum: true
+                exclusiveMinimum: 0
             n_epochs:
               description: |
                 The number of epochs to train the model for. An epoch refers to one full cycle
@@ -37545,6 +37977,8 @@ components:
       - $ref: '#/components/schemas/ResponseProperties'
       - type: object
         properties:
+          access_programs:
+            $ref: '#/components/schemas/AccessProgramsParam'
           prompt_cache_options:
             $ref: '#/components/schemas/ResponsePromptCacheOptionsParam'
           service_tier:
@@ -40867,15 +41301,15 @@ components:
         beta:
           description: |
             The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
+          default: auto
           anyOf:
           - type: string
             enum:
             - auto
             x-stainless-const: true
           - type: number
-            minimum: 0
             maximum: 2
-            exclusiveMinimum: true
+            exclusiveMinimum: 0
         batch_size:
           description: |
             Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
@@ -40891,14 +41325,14 @@ components:
         learning_rate_multiplier:
           description: |
             Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+          default: auto
           anyOf:
           - type: string
             enum:
             - auto
             x-stainless-const: true
           - type: number
-            minimum: 0
-            exclusiveMinimum: true
+            exclusiveMinimum: 0
         n_epochs:
           description: |
             The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
@@ -40955,14 +41389,14 @@ components:
         learning_rate_multiplier:
           description: |
             Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+          default: auto
           anyOf:
           - type: string
             enum:
             - auto
             x-stainless-const: true
           - type: number
-            minimum: 0
-            exclusiveMinimum: true
+            exclusiveMinimum: 0
         n_epochs:
           description: |
             The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
@@ -40988,15 +41422,15 @@ components:
         compute_multiplier:
           description: |
             Multiplier on amount of compute used for exploring search space during training.
+          default: auto
           anyOf:
           - type: string
             enum:
             - auto
             x-stainless-const: true
           - type: number
-            minimum: 0.00001
             maximum: 10
-            exclusiveMinimum: true
+            exclusiveMinimum: 0.00001
         eval_interval:
           description: |
             The number of training steps between evaluation runs.
@@ -41055,14 +41489,14 @@ components:
         learning_rate_multiplier:
           description: |
             Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+          default: auto
           anyOf:
           - type: string
             enum:
             - auto
             x-stainless-const: true
           - type: number
-            minimum: 0
-            exclusiveMinimum: true
+            exclusiveMinimum: 0
         n_epochs:
           description: |
             The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
@@ -41235,6 +41669,7 @@ components:
               description: |
                 Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
                 overfitting.
+              default: auto
               anyOf:
               - type: string
                 enum:
@@ -41242,8 +41677,7 @@ components:
                 x-stainless-const: true
                 title: Auto
               - type: number
-                minimum: 0
-                exclusiveMinimum: true
+                exclusiveMinimum: 0
             n_epochs:
               description: |
                 The number of epochs to train the model for. An epoch refers to one full cycle
@@ -45437,6 +45871,7 @@ components:
         - gpt-daybreak-blue-latest
         - gpt-daybreak-red-latest
         - gpt-5.6-cyber
+        - gpt-rosalind-research
     ModelIdsShared:
       example: gpt-6-astra
       anyOf:
@@ -50921,6 +51356,9 @@ components:
             The session configuration for either a realtime or transcription session.
           discriminator:
             propertyName: type
+            mapping:
+              realtime: '#/components/schemas/RealtimeSessionCreateResponseGA'
+              transcription: '#/components/schemas/RealtimeTranscriptionSessionCreateResponseGA'
           anyOf:
           - $ref: '#/components/schemas/RealtimeSessionCreateResponseGA'
           - $ref: '#/components/schemas/RealtimeTranscriptionSessionCreateResponseGA'
@@ -53738,6 +54176,7 @@ components:
           - realtime.session
           description: The object type. Always `realtime.session`.
         modalities:
+          type: array
           description: |
             The set of modalities the model can respond with. To disable audio,
             set this to ["text"].
@@ -53951,6 +54390,7 @@ components:
           - value
           - expires_at
         modalities:
+          type: array
           description: |
             The set of modalities the model can respond with. To disable audio,
             set this to ["text"].
@@ -56111,6 +56551,10 @@ components:
             - cancelled
             - queued
             - incomplete
+          access_programs:
+            anyOf:
+            - $ref: '#/components/schemas/AccessProgramsBody'
+            - type: 'null'
           created_at:
             type: number
             format: unixtime
@@ -56223,6 +56667,7 @@ components:
               type: integer
             - type: 'null'
         required:
+        - access_programs
         - id
         - object
         - created_at
@@ -56582,6 +57027,7 @@ components:
             "response": {
               "id": "resp_123",
               "object": "response",
+              "access_programs": null,
               "created_at": 1740855869,
               "status": "completed",
               "completed_at": 1740855870,
@@ -56829,6 +57275,7 @@ components:
             "response": {
               "id": "resp_67ccfcdd16748190a91872c75d38539e09e4d4aac714747c",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741487325,
               "status": "in_progress",
               "completed_at": null,
@@ -57064,6 +57511,7 @@ components:
             "response": {
               "id": "resp_123",
               "object": "response",
+              "access_programs": null,
               "created_at": 1740855869,
               "status": "failed",
               "completed_at": null,
@@ -57602,6 +58050,7 @@ components:
             "response": {
               "id": "resp_67ccfcdd16748190a91872c75d38539e09e4d4aac714747c",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741487325,
               "status": "in_progress",
               "completed_at": null,
@@ -57670,6 +58119,7 @@ components:
             "response": {
               "id": "resp_123",
               "object": "response",
+              "access_programs": null,
               "created_at": 1740855869,
               "status": "incomplete",
               "completed_at": null,
@@ -62582,10 +63032,7 @@ components:
           or [file search](https://developers.openai.com/api/docs/guides/tools-file-search). Learn more about
           [built-in tools](https://developers.openai.com/api/docs/guides/tools).
         - **MCP Tools**: Integrations with third-party systems via custom MCP servers
-          or predefined connectors such as Google Drive and SharePoint. Built-in
-          connectors using `connector_id` are deprecated for models released after
-          September 1, 2026. Use `server_url` to connect to a remote MCP server, or
-          `tunnel_id` to connect through a Secure MCP Tunnel. Learn more about
+          or predefined connectors such as Google Drive and SharePoint. Learn more about
           [MCP Tools](https://developers.openai.com/api/docs/guides/tools-connectors-mcp).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code with strongly typed arguments
@@ -64906,7 +65353,9 @@ components:
       - type: object
         title: Web search approximate location
         description: |
-          The approximate location of the user.
+          The approximate location of the user. If omitted or null, defaults to the
+          United States. To avoid this fallback, pass `{"type": "approximate"}` without
+          location fields. To localize results, provide the relevant location fields.
         properties:
           type:
             type: string
@@ -65613,6 +66062,18 @@ components:
                 The `live_...` ID of the pending SIP session. Pass this value unchanged
                 to Live call controls and sideband connections. The corresponding
                 `realtime.call.incoming` event uses a separate `rtc_...` call ID.
+            sip_media_security:
+              description: |
+                Media protection selected on the SIP leg during SDP negotiation. `srtp`
+                indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+                This does not describe SIP signaling security or confirm that media has
+                flowed. Clients should handle unrecognized values as unknown.
+              anyOf:
+              - type: string
+                enum:
+                - rtp
+                - srtp
+              - type: string
             sip_headers:
               type: array
               description: |
@@ -65659,6 +66120,7 @@ components:
             "created_at": 1719168000,
             "data": {
               "session_id": "live_u0_479a275623b54bdb9b6fbae2f7cbd408",
+              "sip_media_security": "srtp",
               "sip_headers": [
                 {"name": "From", "value": "<sip:alice@example.com>;tag=abc123"},
                 {"name": "To", "value": "<sip:recipient@example.com>"},
@@ -65708,6 +66170,18 @@ components:
               description: |
                 The `live_...` ID of the pending SIP session. Forward this value
                 unchanged when accepting or rejecting the call through the Live API.
+            sip_media_security:
+              description: |
+                Media protection selected on the SIP leg during SDP negotiation. `srtp`
+                indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+                This does not describe SIP signaling security or confirm that media has
+                flowed. Clients should handle unrecognized values as unknown.
+              anyOf:
+              - type: string
+                enum:
+                - rtp
+                - srtp
+              - type: string
             sip_headers:
               type: array
               description: |
@@ -65755,6 +66229,7 @@ components:
             "data": {
               "type": "sip",
               "session_id": "live_u0_479a275623b54bdb9b6fbae2f7cbd408",
+              "sip_media_security": "srtp",
               "sip_headers": [
                 {"name": "From", "value": "<sip:alice@example.com>;tag=abc123"},
                 {"name": "To", "value": "<sip:recipient@example.com>"},
@@ -65798,6 +66273,18 @@ components:
                 The ID of the pending SIP call. Pass this value unchanged when
                 accepting or rejecting the call through the Realtime API. For the
                 Live API, use the `session_id` from `live.transport.incoming` instead.
+            sip_media_security:
+              description: |
+                Media protection selected on the SIP leg during SDP negotiation. `srtp`
+                indicates SRTP; `rtp` indicates unencrypted RTP. Omitted when unknown.
+                This does not describe SIP signaling security or confirm that media has
+                flowed. Clients should handle unrecognized values as unknown.
+              anyOf:
+              - type: string
+                enum:
+                - rtp
+                - srtp
+              - type: string
             sip_headers:
               type: array
               description: |
@@ -65844,6 +66331,7 @@ components:
             "created_at": 1719168000,
             "data": {
               "call_id": "rtc_u0_479a275623b54bdb9b6fbae2f7cbd408",
+              "sip_media_security": "srtp",
               "sip_headers": [
                 {"name": "Max-Forwards", "value": "63"},
                 {"name": "CSeq", "value": "851287 INVITE"},
@@ -66130,6 +66618,56 @@ components:
             "type": "safety.alert.created",
             "data": {"id": "alert_0123456789abcdef0123456789abcdef"}
           }
+    WebhookSafetyDeactivationIssued:
+      type: object
+      title: safety.deactivation_issued
+      description: Sent when a deactivation is issued for a safety identifier in your organization.
+      required:
+      - id
+      - object
+      - created_at
+      - type
+      - data
+      properties:
+        id:
+          type: string
+          description: The unique ID of the webhook event.
+        object:
+          type: string
+          enum:
+          - event
+          x-stainless-const: true
+          description: Always `event`.
+        created_at:
+          type: integer
+          format: unixtime
+          description: The Unix timestamp in seconds when the event was created.
+        type:
+          type: string
+          enum:
+          - safety.deactivation_issued
+          x-stainless-const: true
+          description: Always `safety.deactivation_issued`.
+        data:
+          type: object
+          additionalProperties: false
+          required:
+          - id
+          properties:
+            id:
+              type: string
+              description: The safety case ID to pass to `GET /v1/safety/cases/{id}`.
+      x-oaiMeta:
+        name: safety.deactivation_issued
+        group: webhook-events
+        example: |
+          {
+            "id": "evt_123",
+            "object": "event",
+            "created_at": 1787659200,
+            "type": "safety.deactivation_issued",
+            "data": {"id": "C-abc123"}
+          }
     WebhookSafetyOrgAlertCreated:
       type: object
       title: safety.org_alert.created
@@ -66180,6 +66718,56 @@ components:
             "created_at": 1787659200,
             "type": "safety.org_alert.created",
             "data": {"id": "alert_0123456789abcdef0123456789abcdef"}
+          }
+    WebhookSafetyWarningIssued:
+      type: object
+      title: safety.warning_issued
+      description: Sent when a warning is issued for a safety identifier in your organization.
+      required:
+      - id
+      - object
+      - created_at
+      - type
+      - data
+      properties:
+        id:
+          type: string
+          description: The unique ID of the webhook event.
+        object:
+          type: string
+          enum:
+          - event
+          x-stainless-const: true
+          description: Always `event`.
+        created_at:
+          type: integer
+          format: unixtime
+          description: The Unix timestamp in seconds when the event was created.
+        type:
+          type: string
+          enum:
+          - safety.warning_issued
+          x-stainless-const: true
+          description: Always `safety.warning_issued`.
+        data:
+          type: object
+          additionalProperties: false
+          required:
+          - id
+          properties:
+            id:
+              type: string
+              description: The safety case ID to pass to `GET /v1/safety/cases/{id}`.
+      x-oaiMeta:
+        name: safety.warning_issued
+        group: webhook-events
+        example: |
+          {
+            "id": "evt_123",
+            "object": "event",
+            "created_at": 1787659200,
+            "type": "safety.warning_issued",
+            "data": {"id": "C-abc123"}
           }
     ModerationInputType:
       type: string
@@ -68020,7 +68608,7 @@ components:
         user_location:
           anyOf:
           - $ref: '#/components/schemas/ApproximateLocation'
-            description: The user's location.
+            description: 'The approximate location of the user. If omitted or null, defaults to the United States. To avoid this fallback, pass `{"type": "approximate"}` without location fields. To localize results, provide the relevant location fields.'
           - type: 'null'
         search_context_size:
           $ref: '#/components/schemas/SearchContextSize'
@@ -70339,6 +70927,97 @@ components:
         URI that should appear in the SIP Refer-To header. Supports values like
         `tel:+14155550123` or `sip:agent@example.com`.
       example: tel:+14155550123
+    AwsExternalStorageProviderResponse:
+      properties:
+        type:
+          type: string
+          enum:
+          - aws
+          default: aws
+          x-stainless-const: true
+        account_id:
+          type: string
+        region:
+          type: string
+        bucket:
+          type: string
+        role_arn:
+          type: string
+        external_id:
+          type: string
+      type: object
+      required:
+      - type
+      - account_id
+      - region
+      - bucket
+      - role_arn
+      - external_id
+    AzureExternalStorageProviderResponse:
+      properties:
+        type:
+          type: string
+          enum:
+          - azure
+          default: azure
+          x-stainless-const: true
+        tenant_id:
+          type: string
+        subscription_id:
+          type: string
+        resource_group:
+          type: string
+        account_name:
+          type: string
+        container:
+          type: string
+        region:
+          type: string
+      type: object
+      required:
+      - type
+      - tenant_id
+      - subscription_id
+      - resource_group
+      - account_name
+      - container
+      - region
+    GcpExternalStorageProviderResponse:
+      properties:
+        type:
+          type: string
+          enum:
+          - gcp
+          default: gcp
+          x-stainless-const: true
+        bucket:
+          type: string
+        workload_identity_project_number:
+          type: string
+        workload_identity_pool_id:
+          type: string
+        workload_identity_provider_id:
+          type: string
+        region:
+          type: string
+        audience:
+          type: string
+      type: object
+      required:
+      - type
+      - bucket
+      - workload_identity_project_number
+      - workload_identity_pool_id
+      - workload_identity_provider_id
+      - region
+      - audience
+    provider:
+      discriminator:
+        propertyName: type
+      anyOf:
+      - $ref: '#/components/schemas/AwsExternalStorageProviderResponse'
+      - $ref: '#/components/schemas/AzureExternalStorageProviderResponse'
+      - $ref: '#/components/schemas/GcpExternalStorageProviderResponse'
     PublicProjectResidency:
       type: string
       enum:
@@ -70394,6 +71073,21 @@ components:
       - type
       title: Specific shell tool choice
       description: Forces the model to call the shell tool when a tool call is required.
+    CyberAccessProgramEnum:
+      type: string
+      enum:
+      - standard
+      - daybreak_blue
+      - daybreak_red
+    AccessProgramsParam:
+      properties:
+        cyber:
+          $ref: '#/components/schemas/CyberAccessProgramEnum'
+          description: The Cyber access program to use for this request. Supported values are `standard`, `daybreak_blue`, and `daybreak_red`. If omitted, the API resolves the program from the model's Cyber tier and your organization and project access, subject to model-specific eligibility restrictions. By default, models without a Cyber tier use Standard. Blue-tier models use Daybreak Blue when authorized; otherwise they fall back to Standard unless the model requires Daybreak access. Red-tier models use Daybreak Red and require authorization. Requests that require unavailable Daybreak access return 403. An implicit Standard fallback is represented by null in the response's access_programs field, rather than an explicit Standard selection.
+      additionalProperties: false
+      type: object
+      required: []
+      description: Domain-specific access programs to use for this request.
     ResponsePromptCacheOptionsParam:
       properties:
         ttl:
@@ -70447,6 +71141,14 @@ components:
       type: object
       required:
       - type
+    AccessProgramsBody:
+      properties:
+        cyber:
+          $ref: '#/components/schemas/CyberAccessProgramEnum'
+          description: The effective Cyber access program used for this response.
+      type: object
+      required:
+      - cyber
     PromptCacheOptions:
       properties:
         ttl:
@@ -70843,6 +71545,47 @@ components:
       - object
       - deleted
       - id
+    SafetyCaseNoticeType:
+      type: string
+      enum:
+      - warning
+      - deactivation
+    SafetyCaseNotice:
+      properties:
+        type:
+          $ref: '#/components/schemas/SafetyCaseNoticeType'
+      type: object
+      required:
+      - type
+    SafetyCaseResource:
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          enum:
+          - safety.case
+          default: safety.case
+          x-stainless-const: true
+        created_at:
+          type: integer
+          format: unixtime
+        entity_identifier:
+          type: string
+        reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+        notice:
+          $ref: '#/components/schemas/SafetyCaseNotice'
+      type: object
+      required:
+      - id
+      - object
+      - created_at
+      - entity_identifier
+      - reason
+      - notice
     SafetyAlertErrorType:
       type: string
       enum:
@@ -70890,6 +71633,180 @@ components:
       - request_paused
       - error_type
       - reason
+    ExternalStorageOrder:
+      type: string
+      enum:
+      - asc
+      - desc
+    ExternalStorageStatus:
+      type: string
+      enum:
+      - pending
+      - validated
+      - unhealthy
+    ExternalStorageResponse:
+      properties:
+        object:
+          type: string
+          enum:
+          - organization.external_storage
+          default: organization.external_storage
+          x-stainless-const: true
+        id:
+          type: string
+        project_id:
+          type: string
+        provider:
+          discriminator:
+            propertyName: type
+          anyOf:
+          - $ref: '#/components/schemas/AwsExternalStorageProviderResponse'
+          - $ref: '#/components/schemas/AzureExternalStorageProviderResponse'
+          - $ref: '#/components/schemas/GcpExternalStorageProviderResponse'
+        geography:
+          type: string
+        status:
+          $ref: '#/components/schemas/ExternalStorageStatus'
+        created_at:
+          type: integer
+          format: unixtime
+      type: object
+      required:
+      - object
+      - id
+      - project_id
+      - provider
+      - geography
+      - status
+      - created_at
+    ExternalStorageListResource:
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+          default: list
+          x-stainless-const: true
+        data:
+          items:
+            $ref: '#/components/schemas/ExternalStorageResponse'
+          type: array
+        first_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+        last_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+        has_more:
+          type: boolean
+      type: object
+      required:
+      - object
+      - data
+      - first_id
+      - last_id
+      - has_more
+    AwsExternalStorageProviderParams:
+      properties:
+        type:
+          type: string
+          enum:
+          - aws
+          default: aws
+          x-stainless-const: true
+        bucket:
+          type: string
+        role_arn:
+          type: string
+      type: object
+      required:
+      - type
+      - bucket
+      - role_arn
+    AzureExternalStorageProviderParams:
+      properties:
+        type:
+          type: string
+          enum:
+          - azure
+          default: azure
+          x-stainless-const: true
+        tenant_id:
+          type: string
+        subscription_id:
+          type: string
+        resource_group:
+          type: string
+        account_name:
+          type: string
+        container:
+          type: string
+      type: object
+      required:
+      - type
+      - tenant_id
+      - subscription_id
+      - resource_group
+      - account_name
+      - container
+    GcpExternalStorageProviderParams:
+      properties:
+        type:
+          type: string
+          enum:
+          - gcp
+          default: gcp
+          x-stainless-const: true
+        bucket:
+          type: string
+        workload_identity_project_number:
+          type: string
+        workload_identity_pool_id:
+          type: string
+        workload_identity_provider_id:
+          type: string
+      type: object
+      required:
+      - type
+      - bucket
+      - workload_identity_project_number
+      - workload_identity_pool_id
+      - workload_identity_provider_id
+    CreateExternalStorageBody:
+      properties:
+        project_id:
+          type: string
+          example: proj_123
+        provider:
+          discriminator:
+            propertyName: type
+          anyOf:
+          - $ref: '#/components/schemas/AwsExternalStorageProviderParams'
+          - $ref: '#/components/schemas/AzureExternalStorageProviderParams'
+          - $ref: '#/components/schemas/GcpExternalStorageProviderParams'
+      type: object
+      required:
+      - project_id
+      - provider
+    ExternalStorageDeletedResource:
+      properties:
+        object:
+          type: string
+          enum:
+          - organization.external_storage.deleted
+          default: organization.external_storage.deleted
+          x-stainless-const: true
+        id:
+          type: string
+        deleted:
+          type: boolean
+      type: object
+      required:
+      - object
+      - id
+      - deleted
     SpendLimitCurrency:
       anyOf:
       - type: string
@@ -71265,6 +72182,13 @@ components:
         message:
           type: string
           description: A human-readable description of the error that was returned.
+        headers:
+          additionalProperties:
+            type: string
+            description: The retry header value.
+          type: object
+          description: The Retry-After and Retry-After-Ms headers returned with the original error, if any.
+          x-oaiTypeLabel: map
         misalignment:
           $ref: '#/components/schemas/MisalignmentErrorDetailsResource'
       type: object
@@ -73139,7 +74063,118 @@ components:
       - disconnected
       - expired
       - failed
+      x-enumDescriptions:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
       description: The public lifecycle status of an execution environment.
+    HostedPluginResourceInline:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - inline
+          default: inline
+          x-stainless-const: true
+          description: The type of the object. Always `inline`.
+        name:
+          type: string
+          minLength: 0
+          description: The installed plugin name.
+        description:
+          type: string
+          minLength: 0
+          description: The installed plugin description.
+      required:
+      - type
+      - name
+      - description
+      additionalProperties: false
+      description: A plugin installed from an inline ZIP archive.
+    HostedPluginResource:
+      description: A plugin installed in an OpenAI-hosted environment.
+      discriminator:
+        propertyName: type
+        mapping:
+          inline: '#/components/schemas/HostedPluginResourceInline'
+      x-oai-discriminator-values:
+      - inline
+      anyOf:
+      - $ref: '#/components/schemas/HostedPluginResourceInline'
+    HostedSkillResourceSkillReference:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - skill_reference
+          default: skill_reference
+          x-stainless-const: true
+          description: The type of the object. Always `skill_reference`.
+        skill_id:
+          type: string
+          minLength: 0
+          description: The referenced skill ID.
+        version:
+          type: string
+          minLength: 0
+          description: The concrete skill version installed for this session.
+        name:
+          type: string
+          minLength: 0
+          description: The installed skill name.
+        description:
+          type: string
+          minLength: 0
+          description: The installed skill description.
+      required:
+      - type
+      - skill_id
+      - version
+      - name
+      - description
+      additionalProperties: false
+      description: A skill installed from the Skills API.
+    HostedSkillResourceInline:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - inline
+          default: inline
+          x-stainless-const: true
+          description: The type of the object. Always `inline`.
+        name:
+          type: string
+          minLength: 0
+          description: The installed skill name.
+        description:
+          type: string
+          minLength: 0
+          description: The installed skill description.
+      required:
+      - type
+      - name
+      - description
+      additionalProperties: false
+      description: A skill installed from an inline ZIP archive.
+    HostedSkillResource:
+      description: A skill installed in an OpenAI-hosted environment.
+      discriminator:
+        propertyName: type
+        mapping:
+          skill_reference: '#/components/schemas/HostedSkillResourceSkillReference'
+          inline: '#/components/schemas/HostedSkillResourceInline'
+      x-oai-discriminator-values:
+      - skill_reference
+      - inline
+      anyOf:
+      - $ref: '#/components/schemas/HostedSkillResourceSkillReference'
+      - $ref: '#/components/schemas/HostedSkillResourceInline'
     HostedEnvironmentFileResourceFileId:
       type: object
       properties:
@@ -73218,111 +74253,6 @@ components:
       anyOf:
       - $ref: '#/components/schemas/HostedEnvironmentFileResourceFileId'
       - $ref: '#/components/schemas/HostedEnvironmentFileResourceInline'
-    HostedSkillResourceSkillReference:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - skill_reference
-          default: skill_reference
-          x-stainless-const: true
-          description: The type of the object. Always `skill_reference`.
-        skill_id:
-          type: string
-          minLength: 0
-          description: The referenced skill ID.
-        version:
-          type: string
-          minLength: 0
-          description: The concrete skill version installed for this session.
-        name:
-          type: string
-          minLength: 0
-          description: The installed skill name.
-        description:
-          type: string
-          minLength: 0
-          description: The installed skill description.
-      required:
-      - type
-      - skill_id
-      - version
-      - name
-      - description
-      additionalProperties: false
-      description: A skill installed from the Skills API.
-    HostedSkillResourceInline:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - inline
-          default: inline
-          x-stainless-const: true
-          description: The type of the object. Always `inline`.
-        name:
-          type: string
-          minLength: 0
-          description: The installed skill name.
-        description:
-          type: string
-          minLength: 0
-          description: The installed skill description.
-      required:
-      - type
-      - name
-      - description
-      additionalProperties: false
-      description: A skill installed from an inline ZIP archive.
-    HostedSkillResource:
-      description: A skill installed in an OpenAI-hosted environment.
-      discriminator:
-        propertyName: type
-        mapping:
-          skill_reference: '#/components/schemas/HostedSkillResourceSkillReference'
-          inline: '#/components/schemas/HostedSkillResourceInline'
-      x-oai-discriminator-values:
-      - skill_reference
-      - inline
-      anyOf:
-      - $ref: '#/components/schemas/HostedSkillResourceSkillReference'
-      - $ref: '#/components/schemas/HostedSkillResourceInline'
-    HostedPluginResourceInline:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - inline
-          default: inline
-          x-stainless-const: true
-          description: The type of the object. Always `inline`.
-        name:
-          type: string
-          minLength: 0
-          description: The installed plugin name.
-        description:
-          type: string
-          minLength: 0
-          description: The installed plugin description.
-      required:
-      - type
-      - name
-      - description
-      additionalProperties: false
-      description: A plugin installed from an inline ZIP archive.
-    HostedPluginResource:
-      description: A plugin installed in an OpenAI-hosted environment.
-      discriminator:
-        propertyName: type
-        mapping:
-          inline: '#/components/schemas/HostedPluginResourceInline'
-      x-oai-discriminator-values:
-      - inline
-      anyOf:
-      - $ref: '#/components/schemas/HostedPluginResourceInline'
     PublicEnvironmentResource:
       type: object
       properties:
@@ -73343,20 +74273,6 @@ components:
         status:
           $ref: '#/components/schemas/EnvironmentStatusResource'
           description: The current environment connection status.
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/HostedEnvironmentFileResource'
-          minItems: 0
-          maxItems: 2000
-          description: Files installed in the environment, without their contents.
-        skills:
-          type: array
-          items:
-            $ref: '#/components/schemas/HostedSkillResource'
-          minItems: 0
-          maxItems: 2000
-          description: Skills installed in the environment, without their archive contents.
         plugins:
           type: array
           items:
@@ -73364,6 +74280,20 @@ components:
           minItems: 0
           maxItems: 2000
           description: Plugins installed in the environment, without their archive contents.
+        skills:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostedSkillResource'
+          minItems: 0
+          maxItems: 2000
+          description: Skills installed in the environment, without their archive contents.
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostedEnvironmentFileResource'
+          minItems: 0
+          maxItems: 2000
+          description: Files installed in the environment, without their contents.
       required:
       - id
       - object
@@ -77475,11 +78405,11 @@ components:
           maxItems: 2000
           description: Actions that must be completed before the session can continue.
         error:
+          description: The error that caused the session to fail, if any.
           type:
           - string
           - 'null'
           minLength: 0
-          description: The error that caused the session to fail, if any.
         agent:
           $ref: '#/components/schemas/SessionAgentResource'
           description: The agent running in the session.
@@ -78020,7 +78950,7 @@ components:
       required:
       - type
       additionalProperties: false
-      description: An OpenAI-hosted environment, optionally based on a reusable template.
+      description: An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
     EnvironmentParamSelfHosted:
       type: object
       properties:
@@ -78379,6 +79309,48 @@ components:
       - environment
       additionalProperties: false
       description: Emitted when a hosted session environment is ready to connect.
+    SessionEventAgentSessionEnvironmentReset:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - agent.session.environment.reset
+          default: agent.session.environment.reset
+          x-stainless-const: true
+          description: The type of the object. Always `agent.session.environment.reset`.
+        event_id:
+          type: string
+          minLength: 0
+          description: The unique ID of the event.
+        session_id:
+          type: string
+          minLength: 0
+          description: The ID of the session associated with the event.
+        turn_id:
+          type:
+          - string
+          - 'null'
+          minLength: 0
+          description: The associated turn, when applicable.
+        environment_id:
+          type: string
+          minLength: 0
+          description: The stable environment ID, retained across sandbox replacements.
+        reset_count:
+          type: integer
+          format: int64
+          minimum: 0
+          description: Monotonically increasing reset number. Repeated notifications share this number.
+      required:
+      - type
+      - event_id
+      - session_id
+      - turn_id
+      - environment_id
+      - reset_count
+      additionalProperties: false
+      description: Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
     SessionEventAgentOutputCommandExecutionOutputDelta:
       type: object
       properties:
@@ -79566,6 +80538,7 @@ components:
         mapping:
           error: '#/components/schemas/SessionEventError'
           agent.session.environment.ready: '#/components/schemas/SessionEventAgentSessionEnvironmentReady'
+          agent.session.environment.reset: '#/components/schemas/SessionEventAgentSessionEnvironmentReset'
           agent.output.command_execution_output.delta: '#/components/schemas/SessionEventAgentOutputCommandExecutionOutputDelta'
           agent.session.created: '#/components/schemas/SessionEventAgentSessionCreated'
           agent.session.turn.created: '#/components/schemas/SessionEventAgentSessionTurnCreated'
@@ -79597,6 +80570,7 @@ components:
       x-oai-discriminator-values:
       - error
       - agent.session.environment.ready
+      - agent.session.environment.reset
       - agent.output.command_execution_output.delta
       - agent.session.created
       - agent.session.turn.created
@@ -79628,6 +80602,7 @@ components:
       anyOf:
       - $ref: '#/components/schemas/SessionEventError'
       - $ref: '#/components/schemas/SessionEventAgentSessionEnvironmentReady'
+      - $ref: '#/components/schemas/SessionEventAgentSessionEnvironmentReset'
       - $ref: '#/components/schemas/SessionEventAgentOutputCommandExecutionOutputDelta'
       - $ref: '#/components/schemas/SessionEventAgentSessionCreated'
       - $ref: '#/components/schemas/SessionEventAgentSessionTurnCreated'
@@ -79664,6 +80639,7 @@ components:
           - $ref: '#/components/schemas/ReasoningEffortParam'
           - type: 'null'
           description: Omit to keep the current effort. Null selects the model's default effort.
+          x-openai-go-optional-enum: true
       additionalProperties: false
       description: Reasoning effort for subsequent turns. The reasoning summary stays unchanged.
     UpdateSessionAgentParam:
@@ -79682,6 +80658,7 @@ components:
           - $ref: '#/components/schemas/ServiceTierParam'
           - type: 'null'
           description: Omit to keep the current tier. Null resets it to auto.
+          x-openai-go-optional-enum: true
       additionalProperties: false
       description: Model settings that can change after session creation.
     UpdateAgentSessionParams:
@@ -80018,7 +80995,7 @@ components:
       - metadata
       - created_at
       additionalProperties: false
-      description: A collection of credentials that agent tools can use to authenticate to MCP servers.
+      description: A collection of credentials for MCP servers and OpenAI-hosted environments.
     VaultListResource:
       type: object
       properties:
@@ -80250,19 +81227,95 @@ components:
       - mcp_server_url
       additionalProperties: false
       description: Metadata for a bearer-token credential, without automatic OAuth refresh.
+    VaultCredentialNetworkingResourceUnrestricted:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - unrestricted
+          default: unrestricted
+          x-stainless-const: true
+          description: The type of the object. Always `unrestricted`.
+      required:
+      - type
+      additionalProperties: false
+      description: Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+    VaultCredentialNetworkingResourceLimited:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - limited
+          default: limited
+          x-stainless-const: true
+          description: The type of the object. Always `limited`.
+        allowed_hosts:
+          type: array
+          items:
+            type: string
+            minLength: 0
+          minItems: 1
+          maxItems: 16
+          description: The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+      required:
+      - type
+      - allowed_hosts
+      additionalProperties: false
+      description: Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+    VaultCredentialNetworkingResource:
+      description: Destination permissions for an environment-variable credential. These do not grant network access to the environment.
+      discriminator:
+        propertyName: type
+        mapping:
+          unrestricted: '#/components/schemas/VaultCredentialNetworkingResourceUnrestricted'
+          limited: '#/components/schemas/VaultCredentialNetworkingResourceLimited'
+      x-oai-discriminator-values:
+      - unrestricted
+      - limited
+      anyOf:
+      - $ref: '#/components/schemas/VaultCredentialNetworkingResourceUnrestricted'
+      - $ref: '#/components/schemas/VaultCredentialNetworkingResourceLimited'
+    VaultCredentialAuthResourceEnvironmentVariable:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - environment_variable
+          default: environment_variable
+          x-stainless-const: true
+          description: The type of the object. Always `environment_variable`.
+        secret_name:
+          type: string
+          minLength: 0
+          description: The environment variable name that receives the placeholder in the sandbox.
+        networking:
+          $ref: '#/components/schemas/VaultCredentialNetworkingResource'
+          description: The destinations where the proxy can substitute the secret, subject to the environment network policy.
+      required:
+      - type
+      - secret_name
+      - networking
+      additionalProperties: false
+      description: Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
     VaultCredentialAuthResource:
-      description: The MCP server and authentication configuration of a vault credential, excluding secrets.
+      description: The authentication configuration of a vault credential, excluding secrets.
       discriminator:
         propertyName: type
         mapping:
           mcp_oauth: '#/components/schemas/VaultCredentialAuthResourceMcpOauth'
           static_bearer: '#/components/schemas/VaultCredentialAuthResourceStaticBearer'
+          environment_variable: '#/components/schemas/VaultCredentialAuthResourceEnvironmentVariable'
       x-oai-discriminator-values:
       - mcp_oauth
       - static_bearer
+      - environment_variable
       anyOf:
       - $ref: '#/components/schemas/VaultCredentialAuthResourceMcpOauth'
       - $ref: '#/components/schemas/VaultCredentialAuthResourceStaticBearer'
+      - $ref: '#/components/schemas/VaultCredentialAuthResourceEnvironmentVariable'
     VaultCredentialResource:
       type: object
       properties:
@@ -80287,7 +81340,7 @@ components:
           description: The human-readable name of the credential.
         auth:
           $ref: '#/components/schemas/VaultCredentialAuthResource'
-          description: The authentication method and non-secret configuration for the MCP server.
+          description: The authentication method and non-secret configuration of the credential.
         created_at:
           type: integer
           format: int64
@@ -80305,7 +81358,7 @@ components:
       - created_at
       - updated_at
       additionalProperties: false
-      description: Metadata for a stored MCP server credential. Secret values are never returned.
+      description: Metadata for a stored credential. Secret values are never returned.
     VaultCredentialListResource:
       type: object
       properties:
@@ -80522,19 +81575,103 @@ components:
       - token
       additionalProperties: false
       description: A bearer token for an MCP server, without automatic OAuth refresh.
+    VaultCredentialNetworkingParamUnrestricted:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - unrestricted
+          default: unrestricted
+          x-stainless-const: true
+          description: The type of the object. Always `unrestricted`.
+      required:
+      - type
+      additionalProperties: false
+      description: Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+    VaultCredentialNetworkingParamLimited:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - limited
+          default: limited
+          x-stainless-const: true
+          description: The type of the object. Always `limited`.
+        allowed_hosts:
+          type: array
+          items:
+            type: string
+            minLength: 0
+            maxLength: 1048576
+          minItems: 1
+          maxItems: 16
+          description: The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+      required:
+      - type
+      - allowed_hosts
+      additionalProperties: false
+      description: Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+    VaultCredentialNetworkingParam:
+      description: Destination permissions for an environment-variable credential. These do not grant network access to the environment.
+      discriminator:
+        propertyName: type
+        mapping:
+          unrestricted: '#/components/schemas/VaultCredentialNetworkingParamUnrestricted'
+          limited: '#/components/schemas/VaultCredentialNetworkingParamLimited'
+      x-oai-discriminator-values:
+      - unrestricted
+      - limited
+      anyOf:
+      - $ref: '#/components/schemas/VaultCredentialNetworkingParamUnrestricted'
+      - $ref: '#/components/schemas/VaultCredentialNetworkingParamLimited'
+    CreateVaultCredentialAuthParamEnvironmentVariable:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - environment_variable
+          default: environment_variable
+          x-stainless-const: true
+          description: The type of the object. Always `environment_variable`.
+        secret_name:
+          type: string
+          minLength: 1
+          maxLength: 1048576
+          description: The environment variable name that receives the placeholder, such as `SERVICE_API_KEY`. Use ASCII letters, digits, and underscores, starting with a letter or underscore. Names starting with `CODEX_` and managed proxy or certificate variable names are reserved.
+        secret_value:
+          type: string
+          minLength: 1
+          maxLength: 1048576
+          description: The write-only secret to store. Never returned in credential resources or supplied directly to sandbox code. Must be nonempty and must not contain carriage returns, newlines, or NUL bytes.
+        networking:
+          $ref: '#/components/schemas/VaultCredentialNetworkingParam'
+          description: The destinations where the proxy can substitute this secret. The environment network policy must also allow them.
+      required:
+      - type
+      - secret_name
+      - secret_value
+      - networking
+      additionalProperties: false
+      description: An HTTP credential for OpenAI-hosted environments only. The sandbox receives an environment variable containing a placeholder, not the secret. Use the placeholder unchanged in outgoing requests. The egress proxy replaces the placeholder with the secret for allowed HTTPS destinations on ports 443 and 8443. Sandbox code cannot read the real secret or use it for local computation, such as signing a request.
     CreateVaultCredentialAuthParam:
-      description: Authentication credentials for an MCP server used by agent tools.
+      description: Authentication credentials for an MCP server or an OpenAI-hosted environment.
       discriminator:
         propertyName: type
         mapping:
           mcp_oauth: '#/components/schemas/CreateVaultCredentialAuthParamMcpOauth'
           static_bearer: '#/components/schemas/CreateVaultCredentialAuthParamStaticBearer'
+          environment_variable: '#/components/schemas/CreateVaultCredentialAuthParamEnvironmentVariable'
       x-oai-discriminator-values:
       - mcp_oauth
       - static_bearer
+      - environment_variable
       anyOf:
       - $ref: '#/components/schemas/CreateVaultCredentialAuthParamMcpOauth'
       - $ref: '#/components/schemas/CreateVaultCredentialAuthParamStaticBearer'
+      - $ref: '#/components/schemas/CreateVaultCredentialAuthParamEnvironmentVariable'
     CreateVaultCredentialParams:
       type: object
       properties:
@@ -80545,12 +81682,12 @@ components:
           description: The name is trimmed before storage. It must contain 1 to 256 UTF-8 bytes after trimming.
         auth:
           $ref: '#/components/schemas/CreateVaultCredentialAuthParam'
-          description: The authentication method and secret values to store for the MCP server.
+          description: The authentication method and write-only secret values to store.
       required:
       - auth
       - name
       additionalProperties: false
-      description: Parameters for storing a credential that authorizes access to an MCP server.
+      description: Parameters for storing a credential for an MCP server or an OpenAI-hosted environment.
     RotateMcpOauthTokenEndpointAuthParamClientSecretBasic:
       type: object
       properties:
@@ -80683,19 +81820,42 @@ components:
       - token
       additionalProperties: false
       description: Replace the bearer token for the credential's MCP server.
+    RotateVaultCredentialAuthParamEnvironmentVariable:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - environment_variable
+          default: environment_variable
+          x-stainless-const: true
+          description: The type of the object. Always `environment_variable`.
+        secret_value:
+          type: string
+          minLength: 1
+          maxLength: 1048576
+          description: The write-only replacement secret. Never returned in credential resources or supplied directly to sandbox code. Must be nonempty and must not contain carriage returns, newlines, or NUL bytes.
+      required:
+      - type
+      - secret_value
+      additionalProperties: false
+      description: Replace the secret for an OpenAI-hosted environment credential. The environment variable name and networking configuration remain unchanged.
     RotateVaultCredentialAuthParam:
-      description: Updates to a vault credential without changing its authentication method or MCP server.
+      description: Updates to a vault credential without changing its authentication method or destination configuration.
       discriminator:
         propertyName: type
         mapping:
           mcp_oauth: '#/components/schemas/RotateVaultCredentialAuthParamMcpOauth'
           static_bearer: '#/components/schemas/RotateVaultCredentialAuthParamStaticBearer'
+          environment_variable: '#/components/schemas/RotateVaultCredentialAuthParamEnvironmentVariable'
       x-oai-discriminator-values:
       - mcp_oauth
       - static_bearer
+      - environment_variable
       anyOf:
       - $ref: '#/components/schemas/RotateVaultCredentialAuthParamMcpOauth'
       - $ref: '#/components/schemas/RotateVaultCredentialAuthParamStaticBearer'
+      - $ref: '#/components/schemas/RotateVaultCredentialAuthParamEnvironmentVariable'
     RotateVaultCredentialParams:
       type: object
       properties:
@@ -83406,7 +84566,7 @@ components:
         user_location:
           anyOf:
           - $ref: '#/components/schemas/BetaApproximateLocation'
-            description: The user's location.
+            description: 'The approximate location of the user. If omitted or null, defaults to the United States. To avoid this fallback, pass `{"type": "approximate"}` without location fields. To localize results, provide the relevant location fields.'
           - type: 'null'
         search_context_size:
           $ref: '#/components/schemas/BetaSearchContextSize'
@@ -84379,7 +85539,9 @@ components:
       - type: object
         title: Web search approximate location
         description: |
-          The approximate location of the user.
+          The approximate location of the user. If omitted or null, defaults to the
+          United States. To avoid this fallback, pass `{"type": "approximate"}` without
+          location fields. To localize results, provide the relevant location fields.
         properties:
           type:
             type: string
@@ -88106,6 +89268,7 @@ components:
         - gpt-daybreak-blue-latest
         - gpt-daybreak-red-latest
         - gpt-5.6-cyber
+        - gpt-rosalind-research
     BetaModelIdsShared:
       example: gpt-6-astra
       anyOf:
@@ -89727,6 +90890,10 @@ components:
             - cancelled
             - queued
             - incomplete
+          access_programs:
+            anyOf:
+            - $ref: '#/components/schemas/BetaAccessProgramsBody'
+            - type: 'null'
           created_at:
             type: number
             format: unixtime
@@ -89839,6 +91006,7 @@ components:
               type: integer
             - type: 'null'
         required:
+        - access_programs
         - id
         - object
         - created_at
@@ -90131,6 +91299,20 @@ components:
       - empty_image_file
       - failed_to_download_image
       - image_file_not_found
+    BetaAccessProgramsBody:
+      properties:
+        cyber:
+          $ref: '#/components/schemas/BetaCyberAccessProgramEnum'
+          description: The effective Cyber access program used for this response.
+      type: object
+      required:
+      - cyber
+    BetaCyberAccessProgramEnum:
+      type: string
+      enum:
+      - standard
+      - daybreak_blue
+      - daybreak_red
     BetaServiceTierResponses:
       anyOf:
       - type: string
@@ -90245,10 +91427,7 @@ components:
           or [file search](https://developers.openai.com/api/docs/guides/tools-file-search). Learn more about
           [built-in tools](https://developers.openai.com/api/docs/guides/tools).
         - **MCP Tools**: Integrations with third-party systems via custom MCP servers
-          or predefined connectors such as Google Drive and SharePoint. Built-in
-          connectors using `connector_id` are deprecated for models released after
-          September 1, 2026. Use `server_url` to connect to a remote MCP server, or
-          `tunnel_id` to connect through a Secure MCP Tunnel. Learn more about
+          or predefined connectors such as Google Drive and SharePoint. Learn more about
           [MCP Tools](https://developers.openai.com/api/docs/guides/tools-connectors-mcp).
         - **Function calls (custom tools)**: Functions that are defined by you,
           enabling the model to call your own code with strongly typed arguments
@@ -91717,6 +92896,7 @@ components:
             "response": {
               "id": "resp_67ccfcdd16748190a91872c75d38539e09e4d4aac714747c",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741487325,
               "status": "in_progress",
               "completed_at": null,
@@ -92245,6 +93425,7 @@ components:
             "response": {
               "id": "resp_67ccfcdd16748190a91872c75d38539e09e4d4aac714747c",
               "object": "response",
+              "access_programs": null,
               "created_at": 1741487325,
               "status": "in_progress",
               "completed_at": null,
@@ -92436,6 +93617,7 @@ components:
             "response": {
               "id": "resp_123",
               "object": "response",
+              "access_programs": null,
               "created_at": 1740855869,
               "status": "completed",
               "completed_at": 1740855870,
@@ -92901,6 +94083,7 @@ components:
             "response": {
               "id": "resp_123",
               "object": "response",
+              "access_programs": null,
               "created_at": 1740855869,
               "status": "incomplete",
               "completed_at": null,
@@ -92968,6 +94151,7 @@ components:
             "response": {
               "id": "resp_123",
               "object": "response",
+              "access_programs": null,
               "created_at": 1740855869,
               "status": "failed",
               "completed_at": null,
@@ -94889,6 +96073,8 @@ components:
       - $ref: '#/components/schemas/BetaResponseProperties'
       - type: object
         properties:
+          access_programs:
+            $ref: '#/components/schemas/BetaAccessProgramsParam'
           prompt_cache_options:
             $ref: '#/components/schemas/BetaResponsePromptCacheOptionsParam'
           service_tier:
@@ -95113,6 +96299,15 @@ components:
       required: []
       title: Prompt cache options
       description: Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](https://developers.openai.com/api/docs/guides/prompt-caching) for current details.
+    BetaAccessProgramsParam:
+      properties:
+        cyber:
+          $ref: '#/components/schemas/BetaCyberAccessProgramEnum'
+          description: The Cyber access program to use for this request. Supported values are `standard`, `daybreak_blue`, and `daybreak_red`. If omitted, the API resolves the program from the model's Cyber tier and your organization and project access, subject to model-specific eligibility restrictions. By default, models without a Cyber tier use Standard. Blue-tier models use Daybreak Blue when authorized; otherwise they fall back to Standard unless the model requires Daybreak access. Red-tier models use Daybreak Red and require authorization. Requests that require unavailable Daybreak access return 403. An implicit Standard fallback is represented by null in the response's access_programs field, rather than an explicit Standard selection.
+      additionalProperties: false
+      type: object
+      required: []
+      description: Domain-specific access programs to use for this request.
     BetaCreateModelResponseProperties:
       allOf:
       - $ref: '#/components/schemas/BetaModelResponseProperties'
@@ -95347,6 +96542,8 @@ components:
       type: string
       enum:
       - gpt-6-astra
+      - gpt-6-sol
+      - gpt-6-luna
       - gpt-5.6-sol
       - gpt-5.6-terra
       - gpt-5.6-luna
@@ -96231,6 +97428,20 @@ x-oaiMeta:
     - type: object
       key: ResponseErrorEvent
       path: <auto>
+  - id: safety-cases
+    title: Safety Cases
+    description: |
+      Retrieve details about a safety warning or deactivation using the case ID
+      from a `safety.warning_issued` or `safety.deactivation_issued` webhook event.
+      Cases belong to an organization and require an API key with `api.safety.read`.
+    navigationGroup: endpoints
+    sections:
+    - type: endpoint
+      key: Getsafetycase
+      path: retrieve
+    - type: object
+      key: SafetyCaseResource
+      path: object
   - id: safety-alerts
     title: Safety Alerts
     description: |
@@ -96303,6 +97514,12 @@ x-oaiMeta:
       path: <auto>
     - type: object
       key: WebhookLiveTransportIncoming
+      path: <auto>
+    - type: object
+      key: WebhookSafetyWarningIssued
+      path: <auto>
+    - type: object
+      key: WebhookSafetyDeactivationIssued
       path: <auto>
     - type: object
       key: WebhookSafetyAlertCreated

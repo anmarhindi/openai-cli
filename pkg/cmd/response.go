@@ -20,6 +20,11 @@ var responsesCreate = requestflag.WithInnerFlags(cli.Command{
 	Usage:   "Creates a model response. Provide\n[text](https://developers.openai.com/api/docs/guides/text) or\n[image](https://developers.openai.com/api/docs/guides/images-vision) inputs to\ngenerate [text](https://developers.openai.com/api/docs/guides/text) or\n[JSON](https://developers.openai.com/api/docs/guides/structured-outputs)\noutputs. Have the model call your own\n[custom code](https://developers.openai.com/api/docs/guides/function-calling) or\nuse built-in [tools](https://developers.openai.com/api/docs/guides/tools) like\n[web search](https://developers.openai.com/api/docs/guides/tools-web-search) or\n[file search](https://developers.openai.com/api/docs/guides/tools-file-search)\nto use your own data as input for the model's response.",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[map[string]any]{
+			Name:     "access-programs",
+			Usage:    "Domain-specific access programs to use for this request.",
+			BodyPath: "access_programs",
+		},
 		&requestflag.Flag[*bool]{
 			Name:     "background",
 			Usage:    "Whether to run the model response in the background.\n[Learn more](https://developers.openai.com/api/docs/guides/background).\n",
@@ -157,7 +162,7 @@ var responsesCreate = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[[]map[string]any]{
 			Name:     "tool",
-			Usage:    "An array of tools the model may call while generating a response. You\ncan specify which tool to use by setting the `tool_choice` parameter.\n\nWe support the following categories of tools:\n- **Built-in tools**: Tools that are provided by OpenAI that extend the\n  model's capabilities, like [web search](https://developers.openai.com/api/docs/guides/tools-web-search)\n  or [file search](https://developers.openai.com/api/docs/guides/tools-file-search). Learn more about\n  [built-in tools](https://developers.openai.com/api/docs/guides/tools).\n- **MCP Tools**: Integrations with third-party systems via custom MCP servers\n  or predefined connectors such as Google Drive and SharePoint. Built-in\n  connectors using `connector_id` are deprecated for models released after\n  September 1, 2026. Use `server_url` to connect to a remote MCP server, or\n  `tunnel_id` to connect through a Secure MCP Tunnel. Learn more about\n  [MCP Tools](https://developers.openai.com/api/docs/guides/tools-connectors-mcp).\n- **Function calls (custom tools)**: Functions that are defined by you,\n  enabling the model to call your own code with strongly typed arguments\n  and outputs. Learn more about\n  [function calling](https://developers.openai.com/api/docs/guides/function-calling). You can also use\n  custom tools to call your own code.\n",
+			Usage:    "An array of tools the model may call while generating a response. You\ncan specify which tool to use by setting the `tool_choice` parameter.\n\nWe support the following categories of tools:\n- **Built-in tools**: Tools that are provided by OpenAI that extend the\n  model's capabilities, like [web search](https://developers.openai.com/api/docs/guides/tools-web-search)\n  or [file search](https://developers.openai.com/api/docs/guides/tools-file-search). Learn more about\n  [built-in tools](https://developers.openai.com/api/docs/guides/tools).\n- **MCP Tools**: Integrations with third-party systems via custom MCP servers\n  or predefined connectors such as Google Drive and SharePoint. Learn more about\n  [MCP Tools](https://developers.openai.com/api/docs/guides/tools-connectors-mcp).\n- **Function calls (custom tools)**: Functions that are defined by you,\n  enabling the model to call your own code with strongly typed arguments\n  and outputs. Learn more about\n  [function calling](https://developers.openai.com/api/docs/guides/function-calling). You can also use\n  custom tools to call your own code.\n",
 			BodyPath: "tools",
 		},
 		&requestflag.Flag[*int64]{
@@ -190,6 +195,13 @@ var responsesCreate = requestflag.WithInnerFlags(cli.Command{
 	Action:          handleResponsesCreate,
 	HideHelpCommand: true,
 }, map[string][]requestflag.HasOuterFlag{
+	"access-programs": {
+		&requestflag.InnerFlag[string]{
+			Name:       "access-programs.cyber",
+			Usage:      "The Cyber access program to use for this request. Supported values are `standard`, `daybreak_blue`, and `daybreak_red`. If omitted, the API resolves the program from the model's Cyber tier and your organization and project access, subject to model-specific eligibility restrictions. By default, models without a Cyber tier use Standard. Blue-tier models use Daybreak Blue when authorized; otherwise they fall back to Standard unless the model requires Daybreak access. Red-tier models use Daybreak Red and require authorization. Requests that require unavailable Daybreak access return 403. An implicit Standard fallback is represented by null in the response's access_programs field, rather than an explicit Standard selection.",
+			InnerField: "cyber",
+		},
+	},
 	"context-management": {
 		&requestflag.InnerFlag[string]{
 			Name:                  "context-management.type",
@@ -467,6 +479,9 @@ func handleResponsesCreate(ctx context.Context, cmd *cli.Command) error {
 			maxItems = cmd.Value("max-items").(int64)
 		}
 		return ShowJSONIterator(stream, maxItems, ShowJSONOpts{
+			Context:        ctx,
+			Operation:      "(resource) responses > (method) create",
+			OutputKind:     outputStreamEvent,
 			ExplicitFormat: explicitFormat,
 			Format:         format,
 			RawOutput:      cmd.Root().Bool("raw-output"),
@@ -483,6 +498,9 @@ func handleResponsesCreate(ctx context.Context, cmd *cli.Command) error {
 
 		obj := gjson.ParseBytes(res)
 		return ShowJSON(obj, ShowJSONOpts{
+			Context:        ctx,
+			Operation:      "(resource) responses > (method) create",
+			OutputKind:     outputResponse,
 			ExplicitFormat: explicitFormat,
 			Format:         format,
 			RawOutput:      cmd.Root().Bool("raw-output"),
@@ -531,6 +549,9 @@ func handleResponsesRetrieve(ctx context.Context, cmd *cli.Command) error {
 			maxItems = cmd.Value("max-items").(int64)
 		}
 		return ShowJSONIterator(stream, maxItems, ShowJSONOpts{
+			Context:        ctx,
+			Operation:      "(resource) responses > (method) retrieve",
+			OutputKind:     outputStreamEvent,
 			ExplicitFormat: explicitFormat,
 			Format:         format,
 			RawOutput:      cmd.Root().Bool("raw-output"),
@@ -552,6 +573,9 @@ func handleResponsesRetrieve(ctx context.Context, cmd *cli.Command) error {
 
 		obj := gjson.ParseBytes(res)
 		return ShowJSON(obj, ShowJSONOpts{
+			Context:        ctx,
+			Operation:      "(resource) responses > (method) retrieve",
+			OutputKind:     outputResponse,
 			ExplicitFormat: explicitFormat,
 			Format:         format,
 			RawOutput:      cmd.Root().Bool("raw-output"),
@@ -620,6 +644,9 @@ func handleResponsesCancel(ctx context.Context, cmd *cli.Command) error {
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
 	return ShowJSON(obj, ShowJSONOpts{
+		Context:        ctx,
+		Operation:      "(resource) responses > (method) cancel",
+		OutputKind:     outputResponse,
 		ExplicitFormat: explicitFormat,
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
@@ -661,6 +688,9 @@ func handleResponsesCompact(ctx context.Context, cmd *cli.Command) error {
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
 	return ShowJSON(obj, ShowJSONOpts{
+		Context:        ctx,
+		Operation:      "(resource) responses > (method) compact",
+		OutputKind:     outputResponse,
 		ExplicitFormat: explicitFormat,
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),

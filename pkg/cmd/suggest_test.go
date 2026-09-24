@@ -8,106 +8,8 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-func TestSuggestCommand(t *testing.T) {
-	commands := []*cli.Command{
-		{Name: "create"},
-		{Name: "retrieve"},
-		{Name: "list"},
-		{Name: "delete"},
-		{Name: "chat:completions"},
-		{Name: "completions"},
-	}
-
-	tests := []struct {
-		name     string
-		provided string
-		want     string
-	}{
-		{
-			name:     "close typo suggests the corrected command",
-			provided: "creat",
-			want:     "Did you mean 'create'?",
-		},
-		{
-			name:     "near-exact suggests the corrected command",
-			provided: "chat:completion",
-			want:     "Did you mean 'chat:completions'?",
-		},
-		{
-			name:     "exact match still suggests itself",
-			provided: "create",
-			want:     "Did you mean 'create'?",
-		},
-		{
-			name:     "uppercase input is matched ignoring case",
-			provided: "CREAT",
-			want:     "Did you mean 'create'?",
-		},
-		{
-			name:     "unrelated input returns no suggestion",
-			provided: "zzzzz",
-			want:     "",
-		},
-		{
-			name:     "low-similarity input returns no suggestion",
-			provided: "totallybogus",
-			want:     "",
-		},
-		{
-			name:     "empty input returns no suggestion",
-			provided: "",
-			want:     "",
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			got := suggestCommand(commands, tc.provided)
-			if got != tc.want {
-				t.Errorf("suggestCommand(%q) = %q, want %q", tc.provided, got, tc.want)
-			}
-		})
-	}
-}
-
-func TestSuggestCommandEmptyCommands(t *testing.T) {
-	if got := suggestCommand(nil, "anything"); got != "" {
-		t.Errorf("suggestCommand(nil, %q) = %q, want empty string", "anything", got)
-	}
-}
-
-func TestWithinOneEdit(t *testing.T) {
-	tests := []struct {
-		a, b string
-		want bool
-	}{
-		{"", "", true},
-		{"", "a", true},
-		{"", "ab", false},
-		{"run", "run", true},
-		{"run", "rn", true},   // deletion
-		{"run", "runn", true}, // insertion
-		{"run", "ran", true},  // substitution
-		{"run", "rnu", true},  // transposition
-		{"run", "urn", true},  // transposition
-		{"ab", "ba", true},    // transposition
-		{"run", "rm", false},
-		{"run", "nur", false},
-		{"list", "ls", false},
-		{"create", "craete", true},
-		{"create", "carete", false},
-		{"create", "caerte", false},
-		{"run", "urm", false}, // swapped pair plus another change
-		{"run", "xrn", false}, // only one side of the swap matches
-	}
-	for _, tc := range tests {
-		for _, pair := range [][2]string{{tc.a, tc.b}, {tc.b, tc.a}} {
-			if got := withinOneEdit(pair[0], pair[1]); got != tc.want {
-				t.Errorf("withinOneEdit(%q, %q) = %v, want %v", pair[0], pair[1], got, tc.want)
-			}
-		}
-	}
-}
+// These tests exercise cli.SuggestCommand, the suggester the command tree
+// installs through custom.ConfigureCommand, against the real generated commands.
 
 // findCommand resolves a command path in the real command tree.
 func findCommand(t *testing.T, path ...string) *cli.Command {
@@ -126,6 +28,32 @@ func findCommand(t *testing.T, path ...string) *cli.Command {
 		command = next
 	}
 	return command
+}
+
+// editDistance is the optimal string alignment distance: each insertion,
+// deletion, substitution, or adjacent transposition costs one.
+func editDistance(a, b string) int {
+	d := make([][]int, len(a)+1)
+	for i := range d {
+		d[i] = make([]int, len(b)+1)
+		d[i][0] = i
+	}
+	for j := range d[0] {
+		d[0][j] = j
+	}
+	for i := 1; i <= len(a); i++ {
+		for j := 1; j <= len(b); j++ {
+			cost := 1
+			if a[i-1] == b[j-1] {
+				cost = 0
+			}
+			d[i][j] = min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+cost)
+			if i > 1 && j > 1 && a[i-1] == b[j-2] && a[i-2] == b[j-1] {
+				d[i][j] = min(d[i][j], d[i-2][j-2]+1)
+			}
+		}
+	}
+	return d[len(a)][len(b)]
 }
 
 // Parent links are only set once the command tree runs, so these suggestions
@@ -165,7 +93,7 @@ func TestSuggestCommandRealTree(t *testing.T) {
 			if tc.want != "" {
 				want = fmt.Sprintf("Did you mean '%s'?", tc.want)
 			}
-			if got := suggestCommand(findCommand(t, tc.path...).Commands, tc.provided); got != want {
+			if got := cli.SuggestCommand(findCommand(t, tc.path...).Commands, tc.provided); got != want {
 				t.Errorf("got %q, want %q", got, want)
 			}
 		})
@@ -189,13 +117,13 @@ func TestSuggestCommandRealTreeSingleEdits(t *testing.T) {
 		typos:
 			for _, typo := range typos {
 				for _, sibling := range parent.Commands {
-					if sibling != command && withinOneEdit(sibling.Name, strings.ToLower(typo)) {
+					if sibling != command && editDistance(sibling.Name, strings.ToLower(typo)) <= 1 {
 						continue typos
 					}
 				}
 				want := fmt.Sprintf("Did you mean '%s'?", name)
-				if got := suggestCommand(parent.Commands, typo); got != want {
-					t.Errorf("%s: suggestCommand(%q) = %q, want %q", parent.Name, typo, got, want)
+				if got := cli.SuggestCommand(parent.Commands, typo); got != want {
+					t.Errorf("%s: SuggestCommand(%q) = %q, want %q", parent.Name, typo, got, want)
 				}
 			}
 			visit(command)

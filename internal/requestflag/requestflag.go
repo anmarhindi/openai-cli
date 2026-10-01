@@ -678,7 +678,11 @@ func parseCLIArg[
 		} else {
 			var yamlValue T
 			err = UnmarshalYAMLOrJSON([]byte(value), &yamlValue)
-			if err == nil {
+			if isUntyped[T]() && !looksStructured(value, yamlValue, err) {
+				// Untyped flags accept free text (e.g. `--input`), so plain prose
+				// such as "Translate: hello" or "#1 priority" is sent as written.
+				parsedValue, err = value, nil
+			} else if err == nil {
 				parsedValue = yamlValue
 			} else if allowAsLiteralString(value) {
 				parsedValue = value
@@ -712,6 +716,43 @@ func parseCLIArg[
 // or of an untyped constant.
 func Ptr[T any](v T) *T {
 	return &v
+}
+
+// isUntyped reports whether T is an interface type, such as the `any` used for
+// union-typed flags that accept either free text or structured values.
+func isUntyped[T any]() bool {
+	return reflect.TypeFor[T]().Kind() == reflect.Interface
+}
+
+// looksStructured reports whether an untyped flag value was meant as YAML or
+// JSON rather than as free text: a flow collection (`{...}` or `[...]`), a YAML
+// sequence ("- item"), a multi-line YAML mapping, or a single non-string scalar
+// (number, boolean, null) or quoted string. Single-line text that YAML would turn into a mapping
+// ("Translate: hello"), drop as a comment ("#1 priority"), or reflow as a plain
+// scalar is sent as written instead.
+func looksStructured(value string, parsed any, parseErr error) bool {
+	trimmed := strings.TrimSpace(value)
+	if strings.HasPrefix(trimmed, "{") || strings.HasPrefix(trimmed, "[") {
+		return true
+	}
+	if parseErr != nil {
+		return false
+	}
+	switch parsed.(type) {
+	case map[string]any:
+		return strings.Contains(trimmed, "\n")
+	case []any:
+		return true
+	case string:
+		return strings.HasPrefix(trimmed, `"`) || strings.HasPrefix(trimmed, "'")
+	case nil:
+		switch trimmed {
+		case "", "~", "null", "Null", "NULL":
+			return true
+		}
+		return false
+	}
+	return true
 }
 
 // Assuming this string failed to parse as valid YAML, this function will

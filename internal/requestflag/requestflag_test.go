@@ -631,6 +631,49 @@ func TestYamlHandling(t *testing.T) {
 	})
 }
 
+// Untyped flags such as `responses create --input` accept free text, so prose
+// that happens to look like YAML must reach the API unchanged, while flow
+// collections, multi-line YAML documents, and scalars keep their meaning.
+func TestUntypedFlagFreeText(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		value string
+		want  any
+	}{
+		// Sent as written.
+		{"Translate: hello", "Translate: hello"},
+		{"#1 priority", "#1 priority"},
+		{"error: timeout", "error: timeout"},
+		{"def f(): pass", "def f(): pass"},
+		{"line one\nline two", "line one\nline two"},
+		{"Say this is a test", "Say this is a test"},
+		{"a: b: c", "a: b: c"},
+		// Structured or scalar YAML.
+		{"[1, 2, 3]", []any{uint64(1), uint64(2), uint64(3)}},
+		{"{type: function, name: f}", map[string]any{"type": "function", "name": "f"}},
+		{"role: user\ncontent: hi", map[string]any{"role": "user", "content": "hi"}},
+		{"- first\n- second", []any{"first", "second"}},
+		{`"quoted: yes"`, "quoted: yes"},
+		{"100", uint64(100)},
+		{"true", true},
+	}
+	for _, tc := range tests {
+		t.Run(tc.value, func(t *testing.T) {
+			t.Parallel()
+			cv := &cliValue[any]{}
+			assert.NoError(t, cv.Set(tc.value))
+			assert.Equal(t, tc.want, cv.Get())
+		})
+	}
+
+	t.Run("mistyped flow collection is still an error", func(t *testing.T) {
+		t.Parallel()
+		cv := &cliValue[any]{}
+		assert.Error(t, cv.Set("{role: user"))
+	})
+}
+
 // TestNullLiteralHandling pins how each Flag[T] type handles the literal value "null"
 // when passed via the CLI. Pointer-typed flags serialize nil as JSON null, which is how
 // nullable body fields (`anyOf: [T, null]` / `{nullable: true}`) let users clear a field
